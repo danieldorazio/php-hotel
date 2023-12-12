@@ -41,30 +41,42 @@ $hotels = [
 ?>
 
 
-
-
-
-
 <DOCTYPE html>
     <html lang="en">
 
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <title>PHP Hotel</title>
+
+
     </head>
 
     <body>
-        <?php foreach ($hotels as $key => $hotel) { ?>
-            <h2><?php echo $hotel['name']; ?></h2>
-            <p><?php echo $hotel['description']; ?></p>
-            <p><?php echo $hotel['parking']; ?></p>
-            <p><?php echo $hotel['vote']; ?></p>
-            <p><?php echo $hotel['distance_to_center']; ?></p>
-
-            <hr>
-
-        <?php }?>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <?php foreach ($hotels[0] as $key => $hotel) { ?>
+                        <th scope="col"><?php echo $key ?></th>
+                    <?php } ?>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($hotels as $key => $hotel) { ?>
+                    <tr>
+                        <th scope="row"><?php echo $key ?></th>
+                        <td><?php echo $hotel['name']; ?></td>
+                        <td><?php echo $hotel['description']; ?></td>
+                        <td><?php echo $hotel['parking'] ? 'available': 'not available'; ?></td>
+                        <td><?php echo $hotel['vote']; ?></td>
+                        <td><?php echo $hotel['distance_to_center']; ?></td>
+                    </tr>
+                <?php } ?>
+            </tbody>
+        </table>
 
     </body>
 
